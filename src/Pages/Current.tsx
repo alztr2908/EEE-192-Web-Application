@@ -72,7 +72,7 @@ function Current() {
       fetchDataFromAPI1();
       fetchDataFromAPI2();
       fetchDataFromAPI3();
-    }, 16000);
+    }, 20000);
 
     // Cleanup function to clear the interval when the component unmounts
     return () => {

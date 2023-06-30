@@ -108,7 +108,7 @@ function Fields({
         cols.push(
           <div
             className="col-md border border-primary-subtle rounded-3"
-            style={{ backgroundColor: "#c5c6d0" }}
+            style={{ backgroundColor: "#808080" }}
           >
             <h2 className="text-center">{data[`field${row}`]} - Before</h2>
             <h2
