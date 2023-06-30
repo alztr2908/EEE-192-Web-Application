@@ -24,6 +24,11 @@ const NavBar = () => {
                   Overall Data
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/legend">
+                  Legend
+                </Link>
+              </li>
             </ul>
           </div>
           <span className="navbar-text justify-content-end">

@@ -1,6 +1,9 @@
 import NavBar from "./components/NavBar";
-import Current from "./components/Current";
-import Overall from "./components/Overall";
+import Footer from "./components/Footer";
+
+import Current from "./Pages/Current";
+import Overall from "./Pages/Overall";
+import Legend from "./Pages/Legend";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -12,12 +15,14 @@ function App() {
         style={{ minHeight: "100vh" }}
       > */}
       <div className="container-sm mx-auto border border-primary-subtle rounded-3">
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<Current />} />
           <Route path="/overall" element={<Overall />} />
-        </Routes> */}
+          <Route path="/legend" element={<Legend />} />
+        </Routes>
       </div>
       {/* </div> */}
+      <Footer />
     </>
   );
 }
