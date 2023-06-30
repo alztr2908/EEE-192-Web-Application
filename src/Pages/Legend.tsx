@@ -92,7 +92,7 @@ function Legend() {
     } else if (buttonName == "CO2") {
       return displayCo2();
     } else if (buttonName == "TVOC") {
-      return displayLight();
+      return displayTVOC();
     } else if (buttonName == "GAA") {
       return displayGAA();
     }
