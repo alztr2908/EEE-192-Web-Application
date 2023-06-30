@@ -37,7 +37,7 @@ const NavBar = () => {
               </ul>
             </div>
           </div>
-          <span className="navbar-text justify-content-end">
+          <span className="navbar-text text-end">
             Smart Monitoring and Notification System for Terrariums
           </span>
         </div>
