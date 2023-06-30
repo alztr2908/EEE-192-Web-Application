@@ -11,8 +11,9 @@ const CO2_TVOC_API =
 
 function Current() {
   const [activeButton, setActiveButton] = useState("TVOC");
-  const [lightData, setLightData] = useState([]);
-  const [co2Data, setCo2Data] = useState([]);
+  const [lightData, setLightData] = useState(null);
+  const [co2Data, setCo2Data] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Function to fetch data from API 1
@@ -26,6 +27,8 @@ function Current() {
       } catch (error) {
         console.error("Error fetching data from API 1:", error);
       }
+
+      setIsLoading(false);
     };
 
     // Function to fetch data from API 2
@@ -165,9 +168,8 @@ function Current() {
           GAA
         </button>
       </div>
-
       {/* Main display */}
-      {lightData == null ? displayNull() : displayData(activeButton)}
+      {isLoading ? displayNull() : displayData(activeButton)}
     </>
   );
 }
