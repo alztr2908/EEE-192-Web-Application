@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 // URL of API
 const light_API =
   " https://api.thingspeak.com/channels/2206893/feeds.json?results=2";
-// const light_API = "";
+const CO2_TVOC_API =
+  "https://api.thingspeak.com/channels/2207047/feeds.json?api_key=M6GPF3WQCDNT4VDQ&results=2";
 // const light_API = "";
 
 function Current() {
@@ -33,6 +34,8 @@ function Current() {
             typeOfSensor="Light Intensity"
             unit="lux"
             apiData={light_API}
+            fieldCount={2}
+            startingField={1}
           />
         </>
       );
@@ -47,9 +50,13 @@ function Current() {
     } else if ("TVOC" == name) {
       return (
         <>
-          <div className="d-flex justify-content-center">
-            <h2 style={{ fontSize: "1.5rem" }}>{name} Sensor</h2>
-          </div>
+          <Fields
+            typeOfSensor="TVOC"
+            unit="ppb"
+            apiData={CO2_TVOC_API}
+            fieldCount={2}
+            startingField={5}
+          />
         </>
       );
     } else if ("GAA" == name) {
