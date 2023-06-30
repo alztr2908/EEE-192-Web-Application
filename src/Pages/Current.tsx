@@ -80,9 +80,6 @@ function Current() {
     };
   }, []); // Empty dependency array ensures that this effect runs only once
 
-  console.log(lightData);
-  console.log(co2Data);
-
   function colorButton(name: string) {
     if ("Light" == name) {
       setActiveButton("Light");

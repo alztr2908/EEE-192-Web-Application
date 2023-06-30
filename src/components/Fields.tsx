@@ -41,9 +41,6 @@ function Fields({
 
     fetchData();
   }, [apiObject]);
-  console.log(currData);
-
-  console.log(data);
 
   //   Handle the logic of Accelerometer
   function is_moving(x: GLfloat, y: GLfloat, z: GLfloat) {
@@ -148,8 +145,6 @@ function Fields({
     }
     return cols;
   };
-
-  console.log(currData);
 
   return (
     <>
