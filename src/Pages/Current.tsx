@@ -104,6 +104,7 @@ function Current() {
           <Fields
             typeOfSensor="Light Intensity"
             unit="lux"
+            // @ts-ignore
             apiObject={lightData}
             fieldCount={2}
             startingField={1}
@@ -116,6 +117,7 @@ function Current() {
           <Fields
             typeOfSensor="CO2"
             unit="ppm"
+            // @ts-ignore
             apiObject={co2Data}
             fieldCount={2}
             startingField={1}
@@ -128,6 +130,7 @@ function Current() {
           <Fields
             typeOfSensor="TVOC"
             unit="ppb"
+            // @ts-ignore
             apiObject={co2Data}
             fieldCount={2}
             startingField={5}
@@ -140,6 +143,7 @@ function Current() {
           <Fields
             typeOfSensor="Accelerometer"
             unit=""
+            // @ts-ignore
             apiObject={gaaData}
             fieldCount={3}
             startingField={1}

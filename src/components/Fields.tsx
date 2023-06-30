@@ -22,9 +22,17 @@ function Fields({
   useEffect(() => {
     const fetchData = async () => {
       try {
+        /* @ts-ignore*/
         setData(apiObject.channel);
+
+        /* @ts-ignore*/
+
         setCurrData(apiObject.feeds[1]);
+
+        /* @ts-ignore*/
+
         setPrevData(apiObject.feeds[0]);
+
         // setLevel(data.feeds[data.feeds.length - 1].field1);
       } catch (error) {
         console.log("Error:", error);
@@ -78,6 +86,7 @@ function Fields({
   };
 
   //Returns an array of columns with the children inside.
+  /* @ts-ignore*/
   const renderCols = (row) => {
     let cols = [];
 
@@ -88,19 +97,24 @@ function Fields({
             className="col-md border border-primary-subtle rounded-3"
             style={{ backgroundColor: "#c5c6d0" }}
           >
+            {/* @ts-ignore*/}
             <h2 className="text-center">{data[`field${row}`]} - Current</h2>
             <h2
               className="text-center"
               style={{ fontSize: "4rem", color: "white" }}
             >
+              {/* @ts-ignore*/}
               {currData[`field${row}`]} {unit}
             </h2>
             <h2 className="text-center">
               {typeOfSensor == "Accelerometer"
                 ? ""
-                : `Level ${currData[`field${row + 1}`]}`}
+                : /* @ts-ignore*/
+                  `Level ${currData[`field${row + 1}`]}`}
             </h2>
+            {/* @ts-ignore*/}
             <p className="text-center">Created At: {currData["created_at"]}</p>
+            {/* @ts-ignore*/}
             <p className="text-center">Entry ID: {currData["entry_id"]}</p>
           </div>
         );
@@ -110,19 +124,23 @@ function Fields({
             className="col-md border border-primary-subtle rounded-3"
             style={{ backgroundColor: "#808080" }}
           >
+            {/* @ts-ignore*/}
             <h2 className="text-center">{data[`field${row}`]} - Before</h2>
             <h2
               className="text-center"
               style={{ fontSize: "4rem", color: "white" }}
             >
+              {/* @ts-ignore*/}
               {prevData[`field${row}`]} {unit}
             </h2>
             <h2 className="text-center">
               {typeOfSensor == "Accelerometer"
-                ? ""
+                ? "" /* @ts-ignore*/
                 : `Level ${prevData[`field${row + 1}`]}`}
             </h2>
+            {/* @ts-ignore*/}
             <p className="text-center">Created At: {prevData["created_at"]}</p>
+            {/* @ts-ignore*/}
             <p className="text-center">Entry ID: {prevData["entry_id"]}</p>
           </div>
         );
@@ -137,6 +155,7 @@ function Fields({
     <>
       <div className="d-flex justify-content-between align-items-end mx-5">
         <h1 style={{ fontSize: "2.5rem" }}>{typeOfSensor} Sensor</h1>
+        {/* @ts-ignore*/}
         <p>updated at: {data.updated_at}</p>
       </div>
       <div
@@ -148,8 +167,11 @@ function Fields({
         {typeOfSensor == "Accelerometer" ? (
           <h1 className="text-center p-3" style={{ fontSize: "4rem" }}>
             {is_moving(
+              /* @ts-ignore*/
               parseFloat(currData.field1),
+              /* @ts-ignore*/
               parseFloat(currData.field2),
+              /* @ts-ignore*/
               parseFloat(currData.field3)
             )}
           </h1>
