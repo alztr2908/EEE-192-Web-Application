@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 interface Props {
   typeOfSensor: string;
   unit: string;
-  apiData: string;
+  apiObject: Object;
   fieldCount: number;
   startingField: number;
 }
@@ -11,24 +11,20 @@ interface Props {
 function Fields({
   typeOfSensor,
   unit,
-  apiData,
+  apiObject,
   fieldCount,
   startingField,
 }: Props) {
   const [data, setData] = useState([]);
   const [currData, setCurrData] = useState([]);
   const [pastData, setPastData] = useState([]);
-
-  // UseEffect for handling the API
+  //   UseEffect for handling the API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(apiData);
-        const data_json = await response.json();
-        setData(data_json);
-        setCurrData(data_json.feeds[1]);
-        setPastData(data_json.feeds[0]);
-        console.log(data_json);
+        setData(apiObject.channel);
+        setCurrData(apiObject.feeds[1]);
+        setPastData(apiObject.feeds[0]);
         // setLevel(data.feeds[data.feeds.length - 1].field1);
       } catch (error) {
         console.log("Error:", error);
@@ -36,14 +32,9 @@ function Fields({
     };
 
     fetchData();
+  }, [apiObject]);
 
-    // const interval = setInterval(fetchData, 16000);
-
-    // return () => {
-    //   clearInterval(interval);
-    // };
-  }, []);
-
+  console.log(data);
   const buildGrid = () => {
     return renderRows();
   };
@@ -81,8 +72,11 @@ function Fields({
       if (col == 0) {
         cols.push(
           <div className="col-md border border-primary-subtle rounded-3">
-            <h2 className="text-center">Current</h2>
+            <h2 className="text-center">{data[`field${row}`]}</h2>
             <h2 className="text-center">{currData[`field${row}`]}</h2>
+            <h2 className="text-center">Level {currData[`field${row + 1}`]}</h2>
+            <p className="text-center">Created At: {currData["created_at"]}</p>
+            <p className="text-center">Entry ID: {currData["entry_id"]}</p>
           </div>
         );
       } else {
@@ -102,8 +96,9 @@ function Fields({
 
   return (
     <>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-between my-2">
         <h2 style={{ fontSize: "1.5rem" }}>{typeOfSensor} Sensor</h2>
+        <p>updated at: {data.updated_at}</p>
       </div>
       <div
         className={`border border-primary-subtle rounded-3`}
