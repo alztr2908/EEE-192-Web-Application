@@ -71,9 +71,17 @@ function Fields({
     for (let col = 0; col < 2; col++) {
       if (col == 0) {
         cols.push(
-          <div className="col-md border border-primary-subtle rounded-3">
-            <h2 className="text-center">{data[`field${row}`]}</h2>
-            <h2 className="text-center">{currData[`field${row}`]}</h2>
+          <div
+            className="col-md border border-primary-subtle rounded-3"
+            style={{ backgroundColor: "#c5c6d0" }}
+          >
+            <h2 className="text-center">{data[`field${row}`]} - Current</h2>
+            <h2
+              className="text-center"
+              style={{ fontSize: "4rem", color: "white" }}
+            >
+              {currData[`field${row}`]} {unit}
+            </h2>
             <h2 className="text-center">Level {currData[`field${row + 1}`]}</h2>
             <p className="text-center">Created At: {currData["created_at"]}</p>
             <p className="text-center">Entry ID: {currData["entry_id"]}</p>
@@ -81,8 +89,20 @@ function Fields({
         );
       } else {
         cols.push(
-          <div className="col-md border border-primary-subtle rounded-3">
-            <h2 className="text-center">Before</h2>
+          <div
+            className="col-md border border-primary-subtle rounded-3"
+            style={{ backgroundColor: "#808080" }}
+          >
+            <h2 className="text-center">{data[`field${row}`]} - Previous</h2>
+            <h2
+              className="text-center"
+              style={{ fontSize: "4rem", color: "white" }}
+            >
+              {pastData[`field${row}`]} {unit}
+            </h2>
+            <h2 className="text-center">Level {pastData[`field${row + 1}`]}</h2>
+            <p className="text-center">Created At: {pastData["created_at"]}</p>
+            <p className="text-center">Entry ID: {pastData["entry_id"]}</p>
           </div>
         );
       }
@@ -96,8 +116,8 @@ function Fields({
 
   return (
     <>
-      <div className="d-flex justify-content-between my-2">
-        <h2 style={{ fontSize: "1.5rem" }}>{typeOfSensor} Sensor</h2>
+      <div className="d-flex justify-content-between align-items-end mx-5">
+        <h1 style={{ fontSize: "2.5rem" }}>{typeOfSensor} Sensor</h1>
         <p>updated at: {data.updated_at}</p>
       </div>
       <div
@@ -105,7 +125,7 @@ function Fields({
         style={{ margin: "0 5%" }}
       >
         {/* Main logic of the data */}
-        {data != null ? buildGrid() : displayNull()}
+        {buildGrid()}
       </div>
     </>
   );

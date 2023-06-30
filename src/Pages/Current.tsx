@@ -7,7 +7,7 @@ const light_API =
   " https://api.thingspeak.com/channels/2206893/feeds.json?results=2";
 const CO2_TVOC_API =
   "https://api.thingspeak.com/channels/2207047/feeds.json?api_key=M6GPF3WQCDNT4VDQ&results=2";
-// const light_API = "";
+// const GAA_API = "";
 
 function Current() {
   const [activeButton, setActiveButton] = useState("TVOC");
@@ -114,37 +114,52 @@ function Current() {
     } else if ("GAA" == name) {
       return (
         <>
-          <div className="d-flex justify-content-center">
-            <h2 style={{ fontSize: "1.5rem" }}>{name} Sensor</h2>
-          </div>
+          <Fields
+            typeOfSensor="TVOC"
+            unit="ppb"
+            apiObject={co2Data}
+            fieldCount={3}
+            startingField={0}
+          />
         </>
       );
     }
   }
 
+  const displayNull = () => {
+    return <h1 className="text-center">No sensor was found</h1>;
+  };
+
   return (
     <>
-      <div className="btn-group">
+      <div
+        className="btn-group btn-group-lg my-5"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <button
-          className={`btn btn-primary`}
+          className={`btn btn-success `}
           onClick={() => colorButton("Light")}
         >
           Light
         </button>
         <button
-          className={`btn btn-primary`}
+          className={`btn btn-success `}
           onClick={() => colorButton("CO2")}
         >
           CO2
         </button>
         <button
-          className={`btn btn-primary`}
+          className={`btn btn-success `}
           onClick={() => colorButton("TVOC")}
         >
           TVOC
         </button>
         <button
-          className={`btn btn-primary`}
+          className={`btn btn-success `}
           onClick={() => colorButton("GAA")}
         >
           GAA
@@ -152,7 +167,7 @@ function Current() {
       </div>
 
       {/* Main display */}
-      {displayData(activeButton)}
+      {lightData == null ? displayNull() : displayData(activeButton)}
     </>
   );
 }
