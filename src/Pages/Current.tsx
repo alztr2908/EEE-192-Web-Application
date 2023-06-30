@@ -7,13 +7,18 @@ const light_API =
   " https://api.thingspeak.com/channels/2206893/feeds.json?results=2";
 const CO2_TVOC_API =
   "https://api.thingspeak.com/channels/2207047/feeds.json?api_key=M6GPF3WQCDNT4VDQ&results=2";
-// const GAA_API = "";
+const GAA_API =
+  "https://api.thingspeak.com/channels/2207920/feeds.json?results=2";
 
 function Current() {
+  // helpers
   const [activeButton, setActiveButton] = useState("TVOC");
+  const [isLoading, setIsLoading] = useState(false);
+
+  // API Data object
   const [lightData, setLightData] = useState(null);
   const [co2Data, setCo2Data] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [gaaData, setGaaData] = useState(null);
 
   useEffect(() => {
     // Function to fetch data from API 1
@@ -27,8 +32,6 @@ function Current() {
       } catch (error) {
         console.error("Error fetching data from API 1:", error);
       }
-
-      setIsLoading(false);
     };
 
     // Function to fetch data from API 2
@@ -44,14 +47,32 @@ function Current() {
       }
     };
 
+    // Function to fetch data from API 3
+    const fetchDataFromAPI3 = async () => {
+      try {
+        const response = await axios.get(GAA_API);
+        // Process the data from the response
+        const processedData = response.data;
+        // Update the state with the processed data
+        setGaaData(processedData);
+      } catch (error) {
+        console.error("Error fetching data from API 3:", error);
+      }
+    };
+
     // Call the fetchDataFromAPIs function immediately
     fetchDataFromAPI1();
     fetchDataFromAPI2();
+    fetchDataFromAPI3();
+
+    // Load Elements when all data were fetched
+    setIsLoading(false);
 
     // Set up the interval to fetch data periodically (every 5 seconds in this example)
     const intervalId = setInterval(() => {
       fetchDataFromAPI1();
       fetchDataFromAPI2();
+      fetchDataFromAPI3();
     }, 16000);
 
     // Cleanup function to clear the interval when the component unmounts
@@ -118,11 +139,11 @@ function Current() {
       return (
         <>
           <Fields
-            typeOfSensor="TVOC"
-            unit="ppb"
-            apiObject={co2Data}
+            typeOfSensor="Accelerometer"
+            unit=""
+            apiObject={gaaData}
             fieldCount={3}
-            startingField={0}
+            startingField={1}
           />
         </>
       );

@@ -17,14 +17,14 @@ function Fields({
 }: Props) {
   const [data, setData] = useState([]);
   const [currData, setCurrData] = useState([]);
-  const [pastData, setPastData] = useState([]);
+  const [prevData, setPrevData] = useState([]);
   //   UseEffect for handling the API
   useEffect(() => {
     const fetchData = async () => {
       try {
         setData(apiObject.channel);
         setCurrData(apiObject.feeds[1]);
-        setPastData(apiObject.feeds[0]);
+        setPrevData(apiObject.feeds[0]);
         // setLevel(data.feeds[data.feeds.length - 1].field1);
       } catch (error) {
         console.log("Error:", error);
@@ -33,8 +33,27 @@ function Fields({
 
     fetchData();
   }, [apiObject]);
+  console.log(currData);
 
   console.log(data);
+
+  //   Handle the logic of Accelerometer
+  function is_moving(x: GLfloat, y: GLfloat, z: GLfloat) {
+    if (
+      x >= 0.98 &&
+      x <= 1.0 &&
+      y >= 0.04 &&
+      y <= 0.06 &&
+      z >= -0.08 &&
+      z <= -0.06
+    ) {
+      return "The Terrarium is not moving";
+    } else {
+      return "The Terrarium is moving";
+    }
+  }
+
+  //   Building the structure of the page
   const buildGrid = () => {
     return renderRows();
   };
@@ -48,7 +67,11 @@ function Fields({
     for (let row = 0; row < fieldCount; row++) {
       rows.push(<div className="row">{renderCols(j)}</div>);
 
-      j += 2;
+      if (typeOfSensor == "Accelerometer") {
+        j += 1;
+      } else {
+        j += 2;
+      }
     }
 
     return rows;
@@ -58,16 +81,6 @@ function Fields({
   const renderCols = (row) => {
     let cols = [];
 
-    /*
-    created at
-    entry_id
-    field1: Lux Ave 
-    field2: Lux Level
-    field3: Max_Lux
-    field4: Max_Lux_Level
-    */
-
-    //If you want to add more bootstrap breakpoints you can pass them as props here.
     for (let col = 0; col < 2; col++) {
       if (col == 0) {
         cols.push(
@@ -82,7 +95,11 @@ function Fields({
             >
               {currData[`field${row}`]} {unit}
             </h2>
-            <h2 className="text-center">Level {currData[`field${row + 1}`]}</h2>
+            <h2 className="text-center">
+              {typeOfSensor == "Accelerometer"
+                ? ""
+                : `Level ${currData[`field${row + 1}`]}`}
+            </h2>
             <p className="text-center">Created At: {currData["created_at"]}</p>
             <p className="text-center">Entry ID: {currData["entry_id"]}</p>
           </div>
@@ -91,18 +108,22 @@ function Fields({
         cols.push(
           <div
             className="col-md border border-primary-subtle rounded-3"
-            style={{ backgroundColor: "#808080" }}
+            style={{ backgroundColor: "#c5c6d0" }}
           >
-            <h2 className="text-center">{data[`field${row}`]} - Previous</h2>
+            <h2 className="text-center">{data[`field${row}`]} - Before</h2>
             <h2
               className="text-center"
               style={{ fontSize: "4rem", color: "white" }}
             >
-              {pastData[`field${row}`]} {unit}
+              {prevData[`field${row}`]} {unit}
             </h2>
-            <h2 className="text-center">Level {pastData[`field${row + 1}`]}</h2>
-            <p className="text-center">Created At: {pastData["created_at"]}</p>
-            <p className="text-center">Entry ID: {pastData["entry_id"]}</p>
+            <h2 className="text-center">
+              {typeOfSensor == "Accelerometer"
+                ? ""
+                : `Level ${prevData[`field${row + 1}`]}`}
+            </h2>
+            <p className="text-center">Created At: {prevData["created_at"]}</p>
+            <p className="text-center">Entry ID: {prevData["entry_id"]}</p>
           </div>
         );
       }
@@ -110,9 +131,7 @@ function Fields({
     return cols;
   };
 
-  const displayNull = () => {
-    return <h1 className="text-center">No sensor was found</h1>;
-  };
+  console.log(currData);
 
   return (
     <>
@@ -126,6 +145,17 @@ function Fields({
       >
         {/* Main logic of the data */}
         {buildGrid()}
+        {typeOfSensor == "Accelerometer" ? (
+          <h1 className="text-center p-3" style={{ fontSize: "4rem" }}>
+            {is_moving(
+              parseFloat(currData.field1),
+              parseFloat(currData.field2),
+              parseFloat(currData.field3)
+            )}
+          </h1>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
