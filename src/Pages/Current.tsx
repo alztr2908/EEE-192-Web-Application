@@ -1,4 +1,3 @@
-import Sensor from "../components/Sensor";
 import Fields from "../components/Fields";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -12,7 +11,7 @@ const GAA_API =
 
 function Current() {
   // helpers
-  const [activeButton, setActiveButton] = useState("TVOC");
+  const [activeButton, setActiveButton] = useState("Light");
   const [isLoading, setIsLoading] = useState(false);
 
   // API Data object
