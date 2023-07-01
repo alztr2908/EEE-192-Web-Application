@@ -103,13 +103,13 @@ function Overall() {
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2207047/charts/5?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+            src="https://thingspeak.com/channels/2207047/charts/5?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Average+TVOC+per+reading&type=line"
           ></iframe>
           <iframe
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2207047/charts/6?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+            src="https://thingspeak.com/channels/2207047/charts/6?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Level+equivalent+of+average+CO2+per+reading&type=line"
           ></iframe>
         </div>
         <div className="d-flex justify-content-around">
@@ -117,13 +117,13 @@ function Overall() {
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2207047/charts/7?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+            src="https://thingspeak.com/channels/2207047/charts/7?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Max+TVOC+value+per+reading&type=line"
           ></iframe>
           <iframe
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2207047/charts/8?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+            src="https://thingspeak.com/channels/2207047/charts/8?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Level+equivalent+of+max+TVOC&type=line"
           ></iframe>
         </div>
       </>
