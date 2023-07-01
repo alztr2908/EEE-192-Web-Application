@@ -66,13 +66,11 @@ function Overall() {
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2207047/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=10&title=Average+CO2+per+reading&type=line"
           ></iframe>
           <iframe
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2207047/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Level+Equivalent+of+CO2+Ave&type=line"
           ></iframe>
         </div>
         <div className="d-flex justify-content-around">
@@ -80,13 +78,11 @@ function Overall() {
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2207047/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Max+CO2+Value&type=line"
           ></iframe>
           <iframe
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2207047/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Level+Equivalent+of+Max+C02&type=line"
           ></iframe>
         </div>
       </>
