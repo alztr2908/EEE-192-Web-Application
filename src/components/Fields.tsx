@@ -121,20 +121,22 @@ function Fields({
             className="col-md border border-primary-subtle rounded-3"
             style={{ backgroundColor: "#808080" }}
           >
-            {/* @ts-ignore*/}
-            <h2 className="text-center">{data[`field${row}`]} - Before</h2>
+            <h3 className="text-center mt-3">
+              {/* @ts-ignore*/}
+              {data[`field${row}`]} - Previous
+            </h3>
             <h2
               className="text-center"
-              style={{ fontSize: "4rem", color: "white" }}
+              style={{ fontSize: "3.5rem", color: "white" }}
             >
               {/* @ts-ignore*/}
               {prevData[`field${row}`]} {unit}
             </h2>
-            <h2 className="text-center">
+            <h3 className="text-center">
               {typeOfSensor == "Accelerometer"
                 ? "" /* @ts-ignore*/
                 : `Level ${prevData[`field${row + 1}`]}`}
-            </h2>
+            </h3>
             {/* @ts-ignore*/}
             <p className="text-center">Created At: {prevData["created_at"]}</p>
             {/* @ts-ignore*/}
