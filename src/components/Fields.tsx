@@ -43,14 +43,21 @@ function Fields({
   }, [apiObject]);
 
   //   Handle the logic of Accelerometer
-  function is_moving(x: GLfloat, y: GLfloat, z: GLfloat) {
+  function is_moving(
+    x: GLfloat,
+    x_old: GLfloat,
+    y: GLfloat,
+    y_old: GLfloat,
+    z: GLfloat,
+    z_old: GLfloat
+  ) {
     if (
-      x >= 0.98 &&
-      x <= 1.0 &&
-      y >= 0.04 &&
-      y <= 0.06 &&
-      z >= -0.08 &&
-      z <= -0.06
+      x >= x_old - 0.01 &&
+      x <= x_old + 0.01 &&
+      y >= y_old - 0.01 &&
+      y <= y_old + 0.01 &&
+      z >= z_old - 0.01 &&
+      z <= z_old + 0.01
     ) {
       return "The Terrarium is not moving";
     } else {
@@ -91,7 +98,7 @@ function Fields({
       if (col == 0) {
         cols.push(
           <div
-            className="col-md border border-primary-subtle rounded-3"
+            className="col-7 border border-primary-subtle rounded-3"
             style={{ backgroundColor: "#c5c6d0" }}
           >
             {/* @ts-ignore*/}
@@ -118,7 +125,7 @@ function Fields({
       } else {
         cols.push(
           <div
-            className="col-md border border-primary-subtle rounded-3"
+            className="col-5 border border-primary-subtle rounded-3"
             style={{ backgroundColor: "#808080" }}
           >
             <h3 className="text-center mt-3">
@@ -167,9 +174,15 @@ function Fields({
               /* @ts-ignore*/
               parseFloat(currData.field1),
               /* @ts-ignore*/
+              parseFloat(prevData.field1),
+              /* @ts-ignore*/
               parseFloat(currData.field2),
               /* @ts-ignore*/
-              parseFloat(currData.field3)
+              parseFloat(prevData.field2),
+              /* @ts-ignore*/
+              parseFloat(currData.field3),
+              /* @ts-ignore*/
+              parseFloat(prevData.field3)
             )}
           </h1>
         ) : (

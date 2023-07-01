@@ -78,9 +78,9 @@ function Legend() {
           style={{ fontSize: "2rem" }}
         >
           <h2 className="text-center">GAA Sensor level equivalent</h2>
-          <h3 className="text-center">X: 0.04 to 0.06 (not moving)</h3>
-          <h3 className="text-center">Y: 0.98 to 1.00 (not moving) </h3>
-          <h3 className="text-center">Z: -0.06 to -0.08 (not moving)</h3>
+          <h3 className="text-center">X: Previous X ± 0.01(not moving)</h3>
+          <h3 className="text-center">Y: Previous Y ± 0.01 (not moving) </h3>
+          <h3 className="text-center">Z: Previous Z ± 0.01 (not moving)</h3>
         </div>
       </>
     );
