@@ -27,11 +27,13 @@ function Legend() {
         >
           <h2 className="text-center">Light Sensor level equivalent</h2>
           <h3 className="text-center">Level 0: 0 - 100 lux (Dim)</h3>
-          <h3 className="text-center">Level 1: 101 - 1000 lux (Bright) </h3>
+          <h3 className="text-center">Level 1: 101 - 500 lux (Bright) </h3>
           <h3 className="text-center">
-            Level 2: Beyond 1000 lux (Very Bright)
+            Level 1: 501 - 10000 lux (Indirect Sunlight){" "}
           </h3>
-          Fix TVOC and CO2 Levels
+          <h3 className="text-center">
+            Level 2: Beyond 10001 lux (Direct Sunlight)
+          </h3>
         </div>
       </>
     );
@@ -44,10 +46,9 @@ function Legend() {
           style={{ fontSize: "2rem" }}
         >
           <h2 className="text-center">CO2 Sensor level equivalent</h2>
-          <h3 className="text-center">Level 0: 0 - 100 lux (Dim)</h3>
-          <h3 className="text-center">Level 1: 101 - 1000 lux (Bright) </h3>
+          <h3 className="text-center">Level 0: 400 - 1000 lux (Optimal)</h3>
           <h3 className="text-center">
-            Level 2: Beyond 1000 lux (Very Bright)
+            Level 1: Beyond 1000 ppm (Good for plants but bad for others)
           </h3>
         </div>
       </>
@@ -61,11 +62,10 @@ function Legend() {
           style={{ fontSize: "2rem" }}
         >
           <h2 className="text-center">TVOC Sensor level equivalent</h2>
-          <h3 className="text-center">Level 0: 0 - 100 lux (Dim)</h3>
-          <h3 className="text-center">Level 1: 101 - 1000 lux (Bright) </h3>
-          <h3 className="text-center">
-            Level 2: Beyond 1000 lux (Very Bright)
-          </h3>
+          <h3 className="text-center">Level 0: 0 - 220 ppb (optimal)</h3>
+          <h3 className="text-center">Level 1: 221 - 660 lux (moderate) </h3>
+          <h3 className="text-center">Level 2: 661 - 1430 lux (High) </h3>
+          <h3 className="text-center">Level 3: Beyond 1431 ppm (Very High)</h3>
         </div>
       </>
     );
@@ -78,9 +78,9 @@ function Legend() {
           style={{ fontSize: "2rem" }}
         >
           <h2 className="text-center">GAA Sensor level equivalent</h2>
-          <h3 className="text-center">X: Previous X ± 0.01(not moving)</h3>
-          <h3 className="text-center">Y: Previous Y ± 0.01 (not moving) </h3>
-          <h3 className="text-center">Z: Previous Z ± 0.01 (not moving)</h3>
+          <h3 className="text-center">
+            X, Y, Z: Previous reading +- 0.01 (not moving)
+          </h3>
         </div>
       </>
     );
