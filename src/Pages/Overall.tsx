@@ -29,13 +29,13 @@ function Overall() {
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2206893/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=10&title=Average+Light+Intensity&type=line"
+            src="https://thingspeak.com/channels/2206893/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=5383&title=Average+Light+Intensity&type=line"
           ></iframe>
           <iframe
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2206893/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=3000&title=Level+equivalent+of+average+lux&type=line"
+            src="https://thingspeak.com/channels/2206893/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=5383&title=Level+equivalent+of+average+lux&type=line"
           ></iframe>
         </div>
         <div className="d-flex justify-content-around my-2">
@@ -43,13 +43,13 @@ function Overall() {
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2206893/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"
+            src="https://thingspeak.com/channels/2206893/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=5383&title=Maximum+lux+per+reading&type=line"
           ></iframe>
           <iframe
             width="450"
             height="260"
             style={{ border: "1px solid #cccccc" }}
-            src="https://thingspeak.com/channels/2206893/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+            src="https://thingspeak.com/channels/2206893/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=5383&title=Level+equivalent+of+max+lux&type=line"
           ></iframe>
         </div>
       </>
